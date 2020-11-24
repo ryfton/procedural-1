@@ -11,15 +11,27 @@ namespace denombrement_lettres
         static void Main(string[] args)
         {
             char[] tableauAlpha = new char[26];
-            string texte;
+            string texte="";
             int[] tabfrequences = new int[26];
-            int compteurlettre;
-            bool taille = false;
+            int compteurlettre=0;
+            int longueur=0;
             do
             {
-                Console.WriteLine("Veuillez entrer un texte d'au moins 120 caractères!");
+               
+
+                if(compteurlettre==0)
+                { Console.WriteLine("Veuillez entrer un texte d'au moins 120 caractères!");
+                }
+                else
+                {
+                    Console.WriteLine("Veuillez recommencer, il vous manque {0}  caractères pour atteindre 120", longueur);
+                }
+
+               
                 texte = (Console.ReadLine()).ToLower();
-            } while (texte.Length <= 12);
+                compteurlettre = texte.Length;
+                longueur = 120 - texte.Length;
+            } while (texte.Length <= 120);
 
 
             texte = filtreaccent(texte);
@@ -34,31 +46,37 @@ namespace denombrement_lettres
             {
                 tabfrequences[i] = 0;
             }
+            for (int i = 0; i < texte.Length; i++)
+            {
+                char temp = texte[i];
+                for (int j = 0; j < tableauAlpha.Length; j++)
+                {
+                    if (temp.CompareTo(tableauAlpha[j])==0)
+                    {
+                        tabfrequences[j]++;
+                    }
+
+
+                }
+                
+            }     
+        
+
+
+
+
 
             //C'est là que l'on s'amuse (signé jean).
 
 
             //for (int i = 0; i < texte.Length; i++)
             //{
-            //    char temp = texte[i];
-            //    for (int j = 0; j < tableauAlpha.Length; j++)
+            //    if (texte[i] >= 97 || texte[i] <= 122)
             //    {
-            //        if (temp.CompareTo(tableauAlpha[j]) == 0)
-            //        {
-            //            tabfrequences[j]++;
-            //        }
+            //        tabfrequences[texte[i] - 97]++;
             //    }
 
-
             //}
-            for (int i = 0; i < texte.Length; i++)
-            {
-                if (texte[i] >= 97 || texte[i] <= 122)
-                {
-                    tabfrequences[texte[i] - 97]++;
-                }
-
-            }
            for (int i = 0; i < tableauAlpha.Length; i++)
             {
                 if (tabfrequences[i] != 0)
