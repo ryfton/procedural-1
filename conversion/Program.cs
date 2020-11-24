@@ -23,7 +23,7 @@ namespace conversion
             else
             {
 
-
+                /*bijoul*/
 
                 string sschaine = Dist.Substring(Dist.Length - 2, 2);
                 Distance = double.Parse((Dist.Substring(0, (Dist.Length - 3))));
