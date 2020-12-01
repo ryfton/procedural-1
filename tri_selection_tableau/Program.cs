@@ -15,13 +15,13 @@ namespace tri_selection_tableau
             int dim = int.Parse(Console.ReadLine());
 
             int[] tabNombre = new int[dim];
-            for (int  i = 0;  i < tabNombre.Length;  i++)
+            for (int  i = 0;  i < dim;  i++)//dans notre code on a fait avec la taille directement c'est la meme chose?
             {
                 Console.WriteLine(" Veuillez entre le nombre numero {0}/{1} dans le tableau", (i + 1), dim);
                 tabNombre[i] = int.Parse(Console.ReadLine());
             }
             
-            Console.WriteLine("votre tableau est rempli, voulez le trier?");
+            Console.WriteLine("votre tableau est rempli, voulez vous le trier?");//(vous)
             //affichage tableau non trié
             ManipulationTab.AfficheTableau(tabNombre);
             ManipulationTab.TriTableau(ref tabNombre);
